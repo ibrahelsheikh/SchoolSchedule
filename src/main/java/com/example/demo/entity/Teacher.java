@@ -25,5 +25,6 @@ public class Teacher {
 
     @NotNull(message = "grade required")
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Grade grade;
 }
