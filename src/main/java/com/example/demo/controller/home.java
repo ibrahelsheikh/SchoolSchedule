@@ -28,7 +28,9 @@ public class home {
 
     ) {
         Long savedTeacherId = teacherService.createTeacher(createTeacherRequest);
-        return ResponseEntity.created(URI.create("/teachers/" + savedTeacherId.getClass())).build();
+        return ResponseEntity
+                .created(URI.create("/teachers/" + savedTeacherId))
+                .build();
     }
 
 
@@ -37,7 +39,9 @@ public class home {
             @Valid @RequestBody CreateSubjectRequest createSubjectRequest
     ) {
         Long savedSubjectId = subjectService.createSubject(createSubjectRequest);
-        return ResponseEntity.created(URI.create("/subjects/" + savedSubjectId.getClass())).build();
+        return ResponseEntity
+                .created(URI.create("/subjects/" + savedSubjectId))
+                .build();
     }
 
 
