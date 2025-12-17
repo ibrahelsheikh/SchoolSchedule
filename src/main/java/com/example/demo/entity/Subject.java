@@ -30,6 +30,8 @@ public class Subject {
     private Semester semester;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @NotNull(message = "grade required")
     private Grade grade;
 
 }
