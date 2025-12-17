@@ -1,9 +1,13 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.request.CreateSubjectRequest;
 import com.example.demo.dto.request.CreateTeacherRequest;
+import com.example.demo.service.SubjectService;
+import com.example.demo.serviceImpl.SubjectServiceImpl;
 import com.example.demo.serviceImpl.TeacherServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,24 +20,25 @@ import java.util.UUID;
 public class home {
 
     private final TeacherServiceImpl teacherService;
+    private final SubjectServiceImpl subjectService;
 
     @PostMapping("/addNewTeacher")
     public ResponseEntity<URI> CreateTeacher(
             @Valid @RequestBody CreateTeacherRequest createTeacherRequest
 
     ) {
-        UUID savedTeacherId = teacherService.createTeacher(createTeacherRequest);
+        Long savedTeacherId = teacherService.createTeacher(createTeacherRequest);
         return ResponseEntity.created(URI.create("/teachers/" + savedTeacherId.getClass())).build();
     }
 
 
-//    @PostMapping("/addNewSubject")
-//    public ResponseEntity<Teacher> createSubject(
-//            @Valid @RequestBody CreateSubjectRequest createSubjectRequest
-//    ) {
-//        Teacher updatedTeacher = teacherService.createSubject(createSubjectRequest);
-//        return new ResponseEntity<>(updatedTeacher, HttpStatus.OK);
-//    }
+    @PostMapping("/addNewSubject")
+    public ResponseEntity<URI> createSubject(
+            @Valid @RequestBody CreateSubjectRequest createSubjectRequest
+    ) {
+        Long savedSubjectId = subjectService.createSubject(createSubjectRequest);
+        return ResponseEntity.created(URI.create("/subjects/" + savedSubjectId.getClass())).build();
+    }
 
 
 }
