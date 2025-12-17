@@ -2,6 +2,8 @@ package com.example.demo.dto.request;
 
 
 import com.example.demo.emuns.Grade;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +22,7 @@ public class CreateTeacherRequest {
     private List<Long> subjectIds;
 
     @NotNull(message = "grade required")
-    private Grade grade;
+    @Enumerated(EnumType.ORDINAL)
+    private List<Grade> grades;
 
 }

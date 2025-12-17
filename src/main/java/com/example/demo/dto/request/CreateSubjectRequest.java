@@ -1,6 +1,7 @@
 package com.example.demo.dto.request;
 
 
+import com.example.demo.emuns.Grade;
 import com.example.demo.emuns.Semester;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
@@ -15,5 +16,8 @@ public class CreateSubjectRequest {
 
     @NotNull(message = "semester required")
     private Semester semester;
+
+    @NotNull(message = "grade required")
+    private Grade grade;
 
 }
