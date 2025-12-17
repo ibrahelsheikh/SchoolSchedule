@@ -1,8 +1,11 @@
 package com.example.demo.entity;
 
+import com.example.demo.emuns.Grade;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+
+import java.util.List;
 
 
 @Entity
@@ -18,8 +21,23 @@ public class Teacher {
     private String name;
 
 
+    @ManyToMany
+    @JoinTable(
+            name = "teacher_subjects",
+            joinColumns = @JoinColumn(name = "teacher_id"),
+            inverseJoinColumns = @JoinColumn(name = "subject_id")
+    )
+    @NotNull(message = "at least one subject required")
+    private List<Subject> subjects;
 
-
-
+    @ElementCollection(targetClass = Grade.class)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(
+            name = "teacher_grades",
+            joinColumns = @JoinColumn(name = "teacher_id")
+    )
+    @Column(name = "grade", nullable = false)
+    @NotNull(message = "at least one grade required")
+    private List<Grade> grades;
 
 }
