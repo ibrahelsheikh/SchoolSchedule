@@ -2,13 +2,11 @@ package com.example.demo.service;
 
 
 import com.example.demo.dto.request.CreateTeacherRequest;
-
-import java.util.List;
+import com.example.demo.dto.resonpse.GetAllTeachersResponse;
 
 
 public interface TeacherService {
     Long createTeacher(CreateTeacherRequest createTeacherRequest);
-    List<Long> getAllTeachers();
+    GetAllTeachersResponse getAllTeachers();
 
 }
-

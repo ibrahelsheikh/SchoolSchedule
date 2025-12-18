@@ -1,10 +1,14 @@
 package com.example.demo.serviceImpl;
 
 import com.example.demo.dto.request.CreateTeacherRequest;
+import com.example.demo.dto.resonpse.GetAllTeachersResponse;
+import com.example.demo.dto.resonpse.SubjectDto;
 import com.example.demo.entity.Teacher;
+import com.example.demo.mapper.SubjectMapper;
 import com.example.demo.mapper.TeacherMapper;
 import com.example.demo.repository.SubjectRepository;
 import com.example.demo.repository.TeacherRepository;
+import com.example.demo.service.SubjectService;
 import com.example.demo.service.TeacherService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +25,7 @@ public class TeacherServiceImpl implements TeacherService {
     private final TeacherRepository teacherRepository;
     private final SubjectRepository subjectRepository;
     private final TeacherMapper teacherMapper;
+    private final SubjectMapper subjectMapper;
 
     @Override
     public Long createTeacher(@Valid CreateTeacherRequest request) {
@@ -40,10 +45,8 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public List<Long> getAllTeachers() {
-        return teacherRepository.findAll()
-                .stream()
-                .map(Teacher::getId)
-                .toList(); // Java 16+
+    public GetAllTeachersResponse getAllTeachers() {
+        List<Teacher> teachers = teacherRepository.findAll();
+        return teacherMapper.toDtoList(teachers);
     }
 }

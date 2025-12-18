@@ -5,6 +5,7 @@ import com.example.demo.dto.resonpse.GetAllSubjectsResponse;
 import com.example.demo.entity.Subject;
 import com.example.demo.mapper.SubjectMapper;
 import com.example.demo.repository.SubjectRepository;
+import com.example.demo.service.SubjectService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Validated
-public class SubjectServiceImpl {
+public class SubjectServiceImpl implements SubjectService {
 
     private final SubjectRepository subjectRepository;
     private final SubjectMapper subjectMapper;
