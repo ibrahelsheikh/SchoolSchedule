@@ -7,4 +7,5 @@ import com.example.demo.entity.Teacher;
 public interface SubjectService {
     Long createSubject(CreateSubjectRequest createSubjectRequest);
     GetAllSubjectsResponse getAllSubjects();
+    void deleteSubject(Long subjectId);
 }

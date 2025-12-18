@@ -49,4 +49,17 @@ public class TeacherServiceImpl implements TeacherService {
         List<Teacher> teachers = teacherRepository.findAll();
         return teacherMapper.toDtoList(teachers);
     }
+
+
+    @Override
+    public void deleteTeacher(Long teacherId) {
+        if (!teacherRepository.existsById(teacherId)) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    "Teacher not found with ID: " + teacherId
+            );
+        }
+        teacherRepository.deleteById(teacherId);
+
+    }
 }

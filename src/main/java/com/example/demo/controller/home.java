@@ -56,5 +56,17 @@ public class home {
         return new ResponseEntity<>(teacherService.getAllTeachers(), HttpStatus.OK);
     }
 
+    @DeleteMapping("/deleteTeacher/{teacherId}")
+    public ResponseEntity<?> deleteTeacher(@PathVariable Long teacherId) {
+        teacherService.deleteTeacher(teacherId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @DeleteMapping("/deleteSubject/{subjectId}")
+    public ResponseEntity<?> deleteSubject(@PathVariable Long subjectId) {
+        subjectService.deleteSubject(subjectId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 
 }

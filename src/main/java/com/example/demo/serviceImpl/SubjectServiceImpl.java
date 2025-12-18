@@ -33,4 +33,13 @@ public class SubjectServiceImpl implements SubjectService {
         List<Subject> subjects = subjectRepository.findAll();
         return subjectMapper.toDtoList(subjects);
     }
+
+    public void deleteSubject(Long subjectId) {
+        if (!subjectRepository.existsById(subjectId)) {
+            throw new RuntimeException(
+                    "Subject not found with ID: " + subjectId
+            );
+        }
+        subjectRepository.deleteById(subjectId);
+    }
 }

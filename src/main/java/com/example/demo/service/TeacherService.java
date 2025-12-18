@@ -8,5 +8,6 @@ import com.example.demo.dto.resonpse.GetAllTeachersResponse;
 public interface TeacherService {
     Long createTeacher(CreateTeacherRequest createTeacherRequest);
     GetAllTeachersResponse getAllTeachers();
+    void deleteTeacher(Long teacherId);
 
 }
