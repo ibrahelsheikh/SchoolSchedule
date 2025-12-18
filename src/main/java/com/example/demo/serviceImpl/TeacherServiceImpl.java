@@ -8,7 +8,9 @@ import com.example.demo.repository.TeacherRepository;
 import com.example.demo.service.TeacherService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -25,7 +27,10 @@ public class TeacherServiceImpl implements TeacherService {
         var subjects = subjectRepository.findAllById(request.getSubjectIds());
 
         if (subjects.size() != request.getSubjectIds().size()) {
-            throw new IllegalArgumentException("One or more subject IDs are invalid");
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Invalid subject IDs: " + request.getSubjectIds()
+            );
         }
 
         Teacher teacher = TeacherMapper.toEntity(request, subjects);
