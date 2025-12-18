@@ -2,6 +2,7 @@ package com.example.demo.serviceImpl;
 
 import com.example.demo.dto.request.CreateTeacherRequest;
 import com.example.demo.entity.Teacher;
+import com.example.demo.mapper.TeacherMapper;
 import com.example.demo.repository.SubjectRepository;
 import com.example.demo.repository.TeacherRepository;
 import com.example.demo.service.TeacherService;
@@ -20,21 +21,17 @@ public class TeacherServiceImpl implements TeacherService {
     private final SubjectRepository subjectRepository;
 
     @Override
-    public Long createTeacher(@Valid CreateTeacherRequest createTeacherRequest) {
-        // Fetch subjects by IDs
-        var subjects = subjectRepository.findAllById(createTeacherRequest.getSubjectIds());
+    public Long createTeacher(@Valid CreateTeacherRequest request) {
 
-        // Map DTO to entity
-        Teacher teacher = new Teacher();
-        teacher.setName(createTeacherRequest.getName());
-        teacher.setSubjects(subjects);
-        teacher.setGrades(createTeacherRequest.getGrades()); // List<Grade>
+        var subjects = subjectRepository.findAllById(request.getSubjectIds());
 
-        // Save teacher
-        Teacher savedTeacher = teacherRepository.save(teacher);
+        if (subjects.size() != request.getSubjectIds().size()) {
+            throw new IllegalArgumentException("One or more subject IDs are invalid");
+        }
 
-        // Return generated ID
-        return savedTeacher.getId();
+        Teacher teacher = TeacherMapper.toEntity(request, subjects);
+
+        return teacherRepository.save(teacher).getId();
     }
 
     @Override
@@ -42,6 +39,6 @@ public class TeacherServiceImpl implements TeacherService {
         return teacherRepository.findAll()
                 .stream()
                 .map(Teacher::getId)
-                .collect(Collectors.toList());
+                .toList(); // Java 16+
     }
 }
