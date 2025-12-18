@@ -6,5 +6,4 @@ import java.util.List;
 public record GetAllSubjectsResponse (
         List<SubjectDto> subjects
 ){
-
 }

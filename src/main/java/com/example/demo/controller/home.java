@@ -3,13 +3,13 @@ package com.example.demo.controller;
 import com.example.demo.dto.request.CreateSubjectRequest;
 import com.example.demo.dto.request.CreateTeacherRequest;
 import com.example.demo.service.SubjectService;
+import com.example.demo.service.TeacherService;
 import com.example.demo.serviceImpl.SubjectServiceImpl;
 import com.example.demo.serviceImpl.TeacherServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -18,11 +18,10 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/")
 @RequiredArgsConstructor
-@Validated
 public class home {
 
-    private final TeacherServiceImpl teacherService;
-    private final SubjectServiceImpl subjectService;
+    private final TeacherService teacherService;
+    private final SubjectService subjectService;
 
     @PostMapping("/addNewTeacher")
     public ResponseEntity<URI> CreateTeacher(
