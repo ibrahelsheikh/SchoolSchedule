@@ -1,6 +1,7 @@
 package com.example.demo.serviceImpl;
 
 import com.example.demo.dto.request.CreateTeacherRequest;
+import com.example.demo.dto.request.UpdateTeacherRequest;
 import com.example.demo.dto.resonpse.GetAllTeachersResponse;
 import com.example.demo.dto.resonpse.SubjectDto;
 import com.example.demo.entity.Teacher;
@@ -62,4 +63,14 @@ public class TeacherServiceImpl implements TeacherService {
         teacherRepository.deleteById(teacherId);
 
     }
+
+
+    @Override
+    public Long UpdateTeacher(UpdateTeacherRequest updateTeacherRequest){
+
+
+
+        return null;
+    }
+
 }

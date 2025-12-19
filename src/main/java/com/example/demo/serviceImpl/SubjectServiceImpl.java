@@ -34,6 +34,7 @@ public class SubjectServiceImpl implements SubjectService {
         return subjectMapper.toDtoList(subjects);
     }
 
+
     public void deleteSubject(Long subjectId) {
         if (!subjectRepository.existsById(subjectId)) {
             throw new RuntimeException(
