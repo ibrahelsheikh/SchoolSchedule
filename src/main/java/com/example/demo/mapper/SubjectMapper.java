@@ -2,7 +2,7 @@ package com.example.demo.mapper;
 
 import com.example.demo.dto.request.CreateSubjectRequest;
 import com.example.demo.dto.resonpse.GetAllSubjectsResponse;
-import com.example.demo.dto.resonpse.SubjectDto;
+import com.example.demo.dto.general.SubjectDto;
 import com.example.demo.entity.Subject;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

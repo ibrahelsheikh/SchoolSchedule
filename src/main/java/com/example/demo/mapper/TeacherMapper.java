@@ -3,8 +3,7 @@ package com.example.demo.mapper;
 import com.example.demo.dto.request.CreateTeacherRequest;
 import com.example.demo.dto.request.UpdateTeacherRequest;
 import com.example.demo.dto.resonpse.GetAllTeachersResponse;
-import com.example.demo.dto.resonpse.SubjectDto;
-import com.example.demo.dto.resonpse.TeacherDto;
+import com.example.demo.dto.general.TeacherDto;
 import com.example.demo.entity.Subject;
 import com.example.demo.entity.Teacher;
 import lombok.RequiredArgsConstructor;
@@ -44,11 +43,11 @@ public class TeacherMapper {
     }
 
 
-    public void updateTeacherFromRequest(UpdateTeacherRequest request, Teacher teacher) {
-        teacher.setName(request.name());
-        teacher.setSubjects(request.subjectIds());
-        teacher.setGrades(request.grades());
-    }
+//    public void updateTeacherFromRequest(UpdateTeacherRequest request, Teacher teacher) {
+//        teacher.setName(request.name());
+//        teacher.setSubjects(request.subjectIds());
+//        teacher.setGrades(request.grades());
+//    }
 
 
 

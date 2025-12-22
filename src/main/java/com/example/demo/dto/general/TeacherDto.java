@@ -1,4 +1,4 @@
-package com.example.demo.dto.resonpse;
+package com.example.demo.dto.general;
 
 import com.example.demo.emuns.Grade;
 import com.example.demo.entity.Subject;

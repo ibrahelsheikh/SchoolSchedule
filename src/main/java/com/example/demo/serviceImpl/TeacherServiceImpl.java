@@ -3,13 +3,11 @@ package com.example.demo.serviceImpl;
 import com.example.demo.dto.request.CreateTeacherRequest;
 import com.example.demo.dto.request.UpdateTeacherRequest;
 import com.example.demo.dto.resonpse.GetAllTeachersResponse;
-import com.example.demo.dto.resonpse.SubjectDto;
 import com.example.demo.entity.Teacher;
 import com.example.demo.mapper.SubjectMapper;
 import com.example.demo.mapper.TeacherMapper;
 import com.example.demo.repository.SubjectRepository;
 import com.example.demo.repository.TeacherRepository;
-import com.example.demo.service.SubjectService;
 import com.example.demo.service.TeacherService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -64,21 +62,26 @@ public class TeacherServiceImpl implements TeacherService {
 
     }
 
-
     @Override
-    public Teacher updateTeacher(UpdateTeacherRequest request) {
-
-        Long teacherId = request.id();
-
-        Teacher teacher = teacherRepository.findById(teacherId)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND,
-                        "Teacher not found with ID: " + teacherId
-                ));
-
-        teacherMapper.updateTeacherFromRequest(request, teacher);
-
-        return teacherRepository.save(teacher);
+    public Teacher updateTeacher(UpdateTeacherRequest updateTeacherRequest) {
+        return null;
     }
+
+
+//    @Override
+//    public Teacher updateTeacher(UpdateTeacherRequest request) {
+//
+//        Long teacherId = request.id();
+//
+//        Teacher teacher = teacherRepository.findById(teacherId)
+//                .orElseThrow(() -> new ResponseStatusException(
+//                        HttpStatus.NOT_FOUND,
+//                        "Teacher not found with ID: " + teacherId
+//                ));
+//
+//        teacherMapper.updateTeacherFromRequest(request, teacher);
+//
+//        return teacherRepository.save(teacher);
+//    }
 
 }

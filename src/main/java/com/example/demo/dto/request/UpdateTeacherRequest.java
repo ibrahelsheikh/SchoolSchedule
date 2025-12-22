@@ -9,6 +9,5 @@ public record UpdateTeacherRequest (
         String name,
         List<Long> subjectIds,
         List<Grade> grades
-
 ){
 }
