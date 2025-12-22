@@ -2,10 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.request.CreateSubjectRequest;
 import com.example.demo.dto.request.CreateTeacherRequest;
+import com.example.demo.dto.request.UpdateTeacherRequest;
 import com.example.demo.service.SubjectService;
 import com.example.demo.service.TeacherService;
-import com.example.demo.serviceImpl.SubjectServiceImpl;
-import com.example.demo.serviceImpl.TeacherServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/")
@@ -23,7 +21,7 @@ public class home {
     private final TeacherService teacherService;
     private final SubjectService subjectService;
 
-    @PostMapping("/addNewTeacher")
+    @PostMapping("/teachers")
     public ResponseEntity<URI> CreateTeacher(
             @Valid @RequestBody CreateTeacherRequest createTeacherRequest
 
@@ -35,7 +33,7 @@ public class home {
     }
 
 
-    @PostMapping("/addNewSubject")
+    @PostMapping("/subjects")
     public ResponseEntity<URI> createSubject(
             @Valid @RequestBody CreateSubjectRequest createSubjectRequest
     ) {
@@ -45,24 +43,34 @@ public class home {
                 .build();
     }
 
-    @GetMapping("/getAllSubjects")
-    public ResponseEntity<?> getAllSubjects() {
-        return new ResponseEntity<>(subjectService.getAllSubjects(), HttpStatus.OK);
-    }
 
-
-    @GetMapping("/getALLTeachers")
+    @GetMapping("/teachers")
     public ResponseEntity<?> getAllTeachers() {
         return new ResponseEntity<>(teacherService.getAllTeachers(), HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteTeacher/{teacherId}")
+    @DeleteMapping("/teachers/{teacherId}")
     public ResponseEntity<?> deleteTeacher(@PathVariable Long teacherId) {
         teacherService.deleteTeacher(teacherId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("/deleteSubject/{subjectId}")
+    @PutMapping("/teachers/{teacherId} ")
+    public ResponseEntity<?> updateTeacher(
+            @Valid @RequestBody UpdateTeacherRequest updateTeacherRequest
+    ) {
+        teacherService.updateTeacher(updateTeacherRequest);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    @GetMapping("/subjects")
+    public ResponseEntity<?> getAllSubjects() {
+        return new ResponseEntity<>(subjectService.getAllSubjects(), HttpStatus.OK);
+    }
+
+
+    @DeleteMapping("/subjects/{subjectId}")
     public ResponseEntity<?> deleteSubject(@PathVariable Long subjectId) {
         subjectService.deleteSubject(subjectId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

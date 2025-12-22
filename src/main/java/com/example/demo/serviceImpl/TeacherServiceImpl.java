@@ -66,7 +66,7 @@ public class TeacherServiceImpl implements TeacherService {
 
 
     @Override
-    public Long UpdateTeacher(UpdateTeacherRequest updateTeacherRequest){
+    public Teacher updateTeacher(UpdateTeacherRequest updateTeacherRequest){
 
 
 
