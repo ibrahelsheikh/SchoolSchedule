@@ -1,6 +1,6 @@
 package com.example.demo.dto.general;
 
-public record lessonDto (
+public record LessonDto(
         Long id,
         Long startTime,
         Long endTime,

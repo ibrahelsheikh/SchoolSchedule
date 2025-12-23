@@ -4,9 +4,9 @@ package com.example.demo.dto.general;
 import java.time.DayOfWeek;
 import java.util.List;
 
-public record daySchedulerDto(
+public record DaySchedulerDto(
         DayOfWeek dayOfWeek,
-        List<lessonDto> lessons
+        List<LessonDto> lessons
 
 ) {
 }
