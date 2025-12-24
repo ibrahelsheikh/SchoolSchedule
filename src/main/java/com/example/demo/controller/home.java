@@ -137,7 +137,7 @@ public class home {
 //    }
 
 
-    @PostMapping("/weekly-schedules")
+    @PostMapping("/weekly-schedules")    //  done
     public ResponseEntity<Void> createWeeklySchedule(
             @RequestBody CreateWeeklyScheduleRequest request
     ) {

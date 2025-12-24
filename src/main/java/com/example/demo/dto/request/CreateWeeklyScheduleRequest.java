@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 
-public record CreateWeeklyScheduleRequest(
+public record CreateWeeklyScheduleRequest(    // done
 
         @NotNull(message = "Grade is required")
         Grade grade,

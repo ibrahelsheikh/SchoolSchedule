@@ -1,9 +1,11 @@
 package com.example.demo.dto.general;
 
+import java.time.LocalTime;
+
 public record LessonDto(
         Long id,
-        Long startTime,
-        Long endTime,
+        LocalTime startTime,
+        LocalTime endTime,
         Long subjectId,
         Long teacherId
 ){
