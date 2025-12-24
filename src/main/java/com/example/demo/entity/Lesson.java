@@ -29,7 +29,6 @@ public class Lesson {
 
 
     @ManyToOne
-    @JoinColumn(nullable = false)
     private DaySchedule daySchedule;
 
 }
