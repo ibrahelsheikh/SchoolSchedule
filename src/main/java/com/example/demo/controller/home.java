@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import com.example.demo.dto.request.CreateSubjectRequest;
 import com.example.demo.dto.request.CreateTeacherRequest;
 import com.example.demo.dto.request.CreateWeeklyScheduleRequest;
-import com.example.demo.dto.request.UpdateTeacherRequest;
 import com.example.demo.dto.resonpse.WeeklyScheduleResponse;
 import com.example.demo.entity.WeeklySchedule;
 import com.example.demo.service.SubjectService;
@@ -56,9 +55,10 @@ public class home {
 
     @PutMapping("/teachers/{teacherId} ")
     public ResponseEntity<?> updateTeacher(
-            @Valid @RequestBody UpdateTeacherRequest updateTeacherRequest
+            @PathVariable Long teacherId,
+            @Valid @RequestBody CreateTeacherRequest createTeacherRequest
     ) {
-        teacherService.updateTeacher(updateTeacherRequest);
+        teacherService.updateTeacher(teacherId, createTeacherRequest);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -165,10 +165,6 @@ public class home {
         weekSchedulerService.updateWeeklySchedule(scheduleId, request);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
-
-
 
 
 }

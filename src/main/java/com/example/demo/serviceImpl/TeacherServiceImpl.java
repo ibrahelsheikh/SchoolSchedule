@@ -1,7 +1,6 @@
 package com.example.demo.serviceImpl;
 
 import com.example.demo.dto.request.CreateTeacherRequest;
-import com.example.demo.dto.request.UpdateTeacherRequest;
 import com.example.demo.dto.resonpse.GetAllTeachersResponse;
 import com.example.demo.entity.Teacher;
 import com.example.demo.mapper.SubjectMapper;
@@ -63,7 +62,22 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public Teacher updateTeacher(UpdateTeacherRequest updateTeacherRequest) {
+    public Teacher updateTeacher(Long teacherId, CreateTeacherRequest createTeacherRequest) {
+        // edit teacher in database and return updated teacher
+        if (!teacherRepository.existsById(teacherId)) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    "Teacher not found with ID: " + teacherId
+            );
+        }
+
+        teacherRepository.save(
+                teacherMapper.toEntity(createTeacherRequest, subjectRepository.findAllById(createTeacherRequest.getSubjectIds()))
+        );
+
+
+
+
         return null;
     }
 
