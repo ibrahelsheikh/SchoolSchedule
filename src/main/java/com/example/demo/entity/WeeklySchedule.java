@@ -1,11 +1,11 @@
 package com.example.demo.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -14,5 +14,13 @@ public class WeeklySchedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    private String grade;
+    private String semester;
+    private int classNumber;
+    private LocalDate date;
+
+    @OneToMany(mappedBy = "weeklySchedule", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DaySchedule> days;
 
 }
