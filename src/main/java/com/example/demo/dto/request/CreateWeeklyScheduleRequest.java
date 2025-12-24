@@ -19,7 +19,7 @@ public record CreateWeeklyScheduleRequest(
         Semester semester,
 
         @Min(value = 1, message = "Class number must be >= 1")
-        @Max(value = 20, message = "Class number must be <= 20")
+        @Max(value = 10, message = "Class number must be <= 10")
         int classNumber,
 
         @NotNull(message = "Date is required")
