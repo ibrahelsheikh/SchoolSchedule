@@ -23,10 +23,12 @@ public class WeekSchedulerServiceImpl implements WeekSchedulerService {
         return null;
     }
 
+
     @Override
     public List<WeeklyScheduleResponse> getAllWeeklySchedules(Pageable pageable) {
         return List.of();
     }
+
 
     @Override
     public WeeklySchedule updateWeeklySchedule(Long scheduleId, CreateWeeklyScheduleRequest request) {
